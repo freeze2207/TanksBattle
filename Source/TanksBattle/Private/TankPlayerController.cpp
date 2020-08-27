@@ -2,7 +2,7 @@
 
 
 #include "TankPlayerController.h"
-#include "TanksBattle.h"
+#include "Tank.h"
 #include "Engine/World.h"
 #include "DrawDebugHelpers.h"
 
