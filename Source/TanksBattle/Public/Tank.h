@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Projectile.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
@@ -29,13 +30,25 @@ private:
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 20000.0;  // 200m/s
 
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBlueprint;
+
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
+	// local barrel reference for projectile spawning
+	UTankBarrel* Barrel = nullptr;
+
 public:
 	void AimAt(FVector HitLocation);
+
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
+
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretReference(UTankTurret* TurretToSet);
+
+	UFUNCTION(BlueprintCallable, Category = Firing)
+	void Fire();
+
 };
