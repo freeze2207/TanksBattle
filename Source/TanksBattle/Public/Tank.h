@@ -8,10 +8,10 @@
 #include "Tank.generated.h"
 
 // Forward declerations
+class UTankMovementComponent;
 class UTankAimingComponent;
 class UTankBarrel;
 class UTankTurret;
-class UTankTrack;
 
 UCLASS()
 class TANKSBATTLE_API ATank : public APawn
@@ -41,6 +41,9 @@ private:
 
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
+
+	UPROPERTY(BlueprintReadOnly)
+	UTankMovementComponent* TankMovementComponent = nullptr;
 
 	// local barrel reference for projectile spawning
 	UTankBarrel* Barrel = nullptr;
