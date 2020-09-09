@@ -11,6 +11,7 @@
 class UTankAimingComponent;
 class UTankBarrel;
 class UTankTurret;
+class UTankTrack;
 
 UCLASS()
 class TANKSBATTLE_API ATank : public APawn
@@ -28,9 +29,14 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, Category = Firing)
-	float LaunchSpeed = 20000.0;  // 200m/s
+	float LaunchSpeed = 10000.0;  // 100m/s
 
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float ReloadTimeInSeconds = 3.0f;
+
+	double LastFireTime = 0.0;
+
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
 protected:
